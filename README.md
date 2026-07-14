@@ -133,7 +133,7 @@ superpower-lite/
 | 檔案 | 用途 |
 |---|---|
 | `SKILL.md` | 唯一的 Agent Skill。包含 YAML frontmatter 與完整行為守則；Skills CLI 會讀取這個檔案。 |
-| `README.md` | 說明定位、行為、安裝、使用、更新、移除與全部檔案用途。 |
+| `README.md` | 說明定位、行為、安裝、使用、更新、移除、維護方式與全部檔案用途。 |
 | `LICENSE` | 本專案的 MIT License。 |
 | `NOTICE` | 說明本專案受到上游 Superpowers 啟發、上游授權與非官方關係。 |
 
@@ -163,6 +163,17 @@ mkdir /tmp/superpowers-lite-test
 cd /tmp/superpowers-lite-test
 npx skills add /path/to/superpower-lite --agent antigravity --copy --yes
 ```
+
+## 維護原則
+
+為了避免這個專案再次膨脹，後續修改遵守以下規則：
+
+1. 維持單一根目錄 `SKILL.md`，除非出現真正獨立且無法合理合併的用途。
+2. 不加入平台專屬 plugin、hook、runtime adapter 或 npm 封裝。
+3. 新規則必須解決實際發生的 Agent 行為問題，不因理論可能性擴寫。
+4. 修改後至少執行 `npx skills add . --list`，並確認只辨識到 `superpowers-lite`。
+5. 版本採 Semantic Versioning；小幅文字與相容性修正升 patch，新增可觀察行為升 minor，破壞既有語意才升 major。
+6. README、LICENSE 與 NOTICE 除非內容確實需要，否則不增加新的專案檔案。
 
 ## 設計原則
 
