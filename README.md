@@ -34,7 +34,7 @@ Superpowers Lite 的原則很簡單：
 這個 repository 刻意不包含：
 
 - npm 套件程式碼或 runtime dependency
-- Claude、Cursor、Codex、Antigravity 等平台專屬 plugin manifest
+- Claude、Cursor、Codex 等平台專屬 plugin manifest
 - SessionStart hooks 或 bootstrap scripts
 - FAST／STANDARD／STRICT 模式
 - 額外的 plan、debug、test、review 或 finish skills
@@ -44,22 +44,38 @@ Superpowers Lite 的原則很簡單：
 
 ## 安裝
 
-### 安裝到目前專案的 Antigravity
+### 一般安裝
+
+讓 Skills CLI 自動偵測目前環境中的 coding agent：
 
 ```bash
-npx skills add yaayaya/superpower-lite --agent antigravity
+npx skills add yaayaya/superpower-lite
 ```
 
-### 全域安裝到 Antigravity
+全域安裝：
 
 ```bash
-npx skills add yaayaya/superpower-lite --agent antigravity --global
+npx skills add yaayaya/superpower-lite --global
 ```
 
-### 非互動式全域安裝
+非互動式全域安裝：
 
 ```bash
-npx skills add yaayaya/superpower-lite --agent antigravity --global --yes
+npx skills add yaayaya/superpower-lite --global --yes
+```
+
+### 安裝到 Codex
+
+安裝到目前專案的 Codex：
+
+```bash
+npx skills add yaayaya/superpower-lite --agent codex
+```
+
+全域安裝到 Codex：
+
+```bash
+npx skills add yaayaya/superpower-lite --agent codex --global
 ```
 
 ### 先查看可用 Skill
@@ -77,10 +93,10 @@ superpowers-lite
 ### 不安裝，單次使用
 
 ```bash
-npx skills use yaayaya/superpower-lite --skill superpowers-lite --agent antigravity
+npx skills use yaayaya/superpower-lite --skill superpowers-lite
 ```
 
-> 本 README 只示範 Antigravity。`SKILL.md` 採用通用 Agent Skills 格式，因此 Skills CLI 技術上也能將它放到其他受支援的 coding agent。
+`SKILL.md` 採用通用 Agent Skills 格式，可由 Skills CLI 安裝到其支援的 coding agents。
 
 ## 使用方式
 
@@ -106,16 +122,22 @@ Use superpowers-lite for this task.
 npx skills update superpowers-lite
 ```
 
-從 Antigravity 移除：
+移除：
 
 ```bash
-npx skills remove superpowers-lite --agent antigravity
+npx skills remove superpowers-lite
+```
+
+只從 Codex 移除：
+
+```bash
+npx skills remove superpowers-lite --agent codex
 ```
 
 移除全域安裝時加上 `--global`：
 
 ```bash
-npx skills remove superpowers-lite --agent antigravity --global
+npx skills remove superpowers-lite --global
 ```
 
 ## Repository 結構
@@ -156,12 +178,12 @@ description: 說明何時以及為什麼應使用這份 Skill。
 npx skills add . --list
 ```
 
-也可以在暫存目錄測試 Antigravity 安裝：
+也可以在暫存目錄測試 Codex 安裝：
 
 ```bash
 mkdir /tmp/superpowers-lite-test
 cd /tmp/superpowers-lite-test
-npx skills add /path/to/superpower-lite --agent antigravity --copy --yes
+npx skills add /path/to/superpower-lite --agent codex --copy --yes
 ```
 
 ## 維護原則
